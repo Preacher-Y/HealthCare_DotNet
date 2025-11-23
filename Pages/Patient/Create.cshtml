@@ -1,0 +1,40 @@
+﻿@page
+@model HealthCare.Pages.Patient.CreateModel
+@{
+    ViewData["Title"] = "Create Patient";
+}
+
+<h1 class="text-center">Add New Patient</h1>
+
+<label id="messagelbl" class="text-center" style="color:@Model.style">@Model.message</label>
+
+<form class="d-grid justify-content-center" method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div>
+            <input type="text" required class="form-control" name="name" value="@Model.patientinfo.name" placeholder="eg: Peter" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div>
+            <input type="text" required class="form-control" name="email" value="@Model.patientinfo.email" placeholder="eg: peter@gmail.com"/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Phone</label>
+        <div>
+            <input type="text" required class="form-control" name="phone" value="@Model.patientinfo.phone" placeholder="eg: +1234567890"/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Address</label>
+        <div>
+            <input type="text" required class="form-control" name="address" value="@Model.patientinfo.address" placeholder="eg: kigali, Rwanda"/>
+        </div>
+    </div>
+    <div class="d-flex gap-2 mt-4">
+        <a class="btn btn-secondary w-50" href="/Patient">Cancel</a>
+        <button class="btn btn-primary w-50" type="submit">Add</button>
+    </div>
+</form>
