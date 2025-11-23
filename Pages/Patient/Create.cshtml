@@ -5,8 +5,13 @@
 }
 
 <h1 class="text-center">Add New Patient</h1>
-
-<label id="messagelbl" class="text-center" style="color:@Model.style">@Model.message</label>
+@if (Model.message.Length > 0)
+{
+    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+        <strong>@Model.message</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
 
 <form class="d-grid justify-content-center" method="POST">
     <div class="row mb-3">

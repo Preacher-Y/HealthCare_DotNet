@@ -7,14 +7,14 @@ namespace HealthCare.Pages.Patient
 {
     public class EditModel : PageModel
     {
-        public Patient.IndexModel.Patientinfo patientInfo = new Patient.IndexModel.Patientinfo();
+        public Patientinfo patientInfo = new Patientinfo();
         public int patientId { get; set;}
         public string message = "";
         public string style = "green";
         public void OnGet()
         {
             patientId = int.Parse(Request.Query["id"]);
-            patientInfo = IndexModel.ListOfPatients.Find(p => p.id == patientId);
+            patientInfo = ListOfPatients.Find(p => p.id == patientId);
             if (patientInfo == null)
             {
                 style = "red";
@@ -35,7 +35,6 @@ namespace HealthCare.Pages.Patient
 
                 if (patientId == 0)
                 {
-                    style = "red";
                     message = "Patient not found";
                     return;
                 }
@@ -63,13 +62,11 @@ namespace HealthCare.Pages.Patient
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            style = "green";
                             message = "Patient updated successfully";
                             Response.Redirect("/Patient");
                         }
                         else
                         {
-                            style = "red";
                             message = "Patient update failed";
                         }
                     }

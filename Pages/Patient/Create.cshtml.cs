@@ -8,7 +8,6 @@ namespace HealthCare.Pages.Patient
     {
         public string message = "";
         public Patient.IndexModel.Patientinfo patientinfo = new Patient.IndexModel.Patientinfo();
-        public string style = "green";
         public void OnGet()
         {
         }
@@ -42,12 +41,10 @@ namespace HealthCare.Pages.Patient
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            style = "green";
                             message= "Patient created successfully";
                             Response.Redirect("/Patient");
                         } else
                         {
-                            style = "red";
                             message= "Patient creation failed";
                         }
                     }
