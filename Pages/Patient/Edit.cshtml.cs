@@ -8,7 +8,7 @@ namespace HealthCare.Pages.Patient
     public class EditModel : PageModel
     {
         public Patient.IndexModel.Patientinfo patientInfo = new Patient.IndexModel.Patientinfo();
-        int patientId = 0;
+        public int patientId { get; set;}
         public string message = "";
         public string style = "green";
         public void OnGet()
@@ -17,8 +17,8 @@ namespace HealthCare.Pages.Patient
             patientInfo = IndexModel.ListOfPatients.Find(p => p.id == patientId);
             if (patientInfo == null)
             {
-                message = "Patient not found";
                 style = "red";
+                message = "Patient not found";
             }
         }
 
@@ -26,10 +26,19 @@ namespace HealthCare.Pages.Patient
         {
             try
             {
+                patientId = int.Parse(Request.Form["id"]);
+                Console.WriteLine("Patient Id: "+ patientId);
                 patientInfo.name = Request.Form["name"];
                 patientInfo.email = Request.Form["email"];
                 patientInfo.phone = Request.Form["phone"];
                 patientInfo.address = Request.Form["address"];
+
+                if (patientId == 0)
+                {
+                    style = "red";
+                    message = "Patient not found";
+                    return;
+                }
 
                 if (patientInfo.name.Length == 0 || patientInfo.email.Length == 0 || patientInfo.phone.Length == 0 || patientInfo.address.Length == 0)
                 {

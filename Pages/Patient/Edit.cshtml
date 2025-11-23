@@ -9,6 +9,7 @@
 <label id="messagelbl" class="text-center" style="color:@Model.style">@Model.message</label>
 
 <form class="d-grid justify-content-center" method="POST">
+    <input type="hidden" name="id" value="@Model.patientId" />
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Name</label>
         <div>
